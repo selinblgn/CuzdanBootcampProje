@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block body %}
+{% if hesap %}
+<h4>{{hesap.username}}</h4>
+<hr>
+Gelir: {{hesap.gelir}}
+<hr>
+Gider: {{hesap.gider}}
+<hr>
+ {{hesap.content|safe}}
+
+{% else %}
+<div class="alert alert-warning">
+Henüz hesabınız bulunmamaktadır..
+</div>
+{% endif %}
+
+{% endblock body %}

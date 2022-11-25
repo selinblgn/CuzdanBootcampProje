@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<h3>Kontrol Paneli</h3>
+<small>Hoşgeldin, {{session["username"]}}</small>
+<hr>
+<a href="/addhesap" class="btn btn-warning">Hesap Ekle</a>
+<hr>
+
+{% if hesap %}
+<table class="table table-hover table-dark">
+  <thead>
+    <tr>
+     
+      <th scope="col">User Name</th>
+        <th scope="col">Gelir</th>
+      <th scope="col">Gider</th>
+       <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for hesap in hesap %} 
+    <tr>
+   
+      <td><a href="/hesap/{{hesap.username}}">{{hesap.username}}</td>
+      <td>{{hesap.gelir}}</td>
+      <td>{{hesap.gider}}</td>
+      <td><a href="/edit/{{hesap.username}}" class="btn btn-light">Gelir/Gider Ekle</a> </td>
+      <td><a href="/delete/{{hesap.username}}" class="btn btn-light">Sil</a> </td>
+      <h2>{{eskigelir}}{{eskigider}}</h2>
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<div class="alert alert-danger"> Henüz hesabınız bulunmamaktadır...</div>
+{% endif %}
+{% endblock %}

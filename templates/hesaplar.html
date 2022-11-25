@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block body %}
+<h3>Hesaplar</h3>
+<hr>
+{% if hesap %}
+    <form action="/search" method="post">
+        <input type="text" name="keyword" class = "input-sm" maxlenght="64" placeholder ="Ara..">
+        <button type="submit" class="btn btn-danger">Ara</button> 
+    </form>
+    <hr>
+    <ul class="list-group">
+    {% for hesap in hesap %} 
+    <li class="list-group-item"><a href="/hesap/{{hesap.username}}">{{hesap.gelir}}{{hesap.gider}} </a></li>
+   {% endfor %}
+   </ul>
+{% else %}
+<div class="alert alert-danger"> Eklenmiş bir hesap bulunmamaktadır...</div>
+{% endif %}
+
+{% endblock body %}
+
